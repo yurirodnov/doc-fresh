@@ -1,4 +1,11 @@
 :root {
+  /* https://coolors.co/palette/bce784-5dd39e-348aa7-525174-513b56 */
+
+  --lime-cream: #bce784ff;
+  --emerald: #5dd39eff;
+  --pacific-cyan: #348aa7ff;
+  --dusty-grape: #525174ff;
+  --vintage-grape: #513b56ff;
 }
 
 /* 1. Use a more intuitive box-sizing model */
