@@ -39,7 +39,8 @@ export const FileUploadForm = () => {
     setMessage("File loading...");
 
     try {
-      const response = await axios.post();
+      const response = await axios.post<UploadResponse>(uploadAPI, data);
+      setMessage(response.data.message);
     } catch (err) {
     } finally {
       setLoading(false);
