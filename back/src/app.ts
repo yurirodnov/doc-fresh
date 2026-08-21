@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
-
+import helmet from "helmet";
+import cors from "cors";
 export const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
