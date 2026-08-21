@@ -6,10 +6,16 @@ type ButtonType = "submit" | "button";
 
 interface ButtonProps {
   title: string;
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
   type: ButtonType;
+  disabled: boolean;
+  onClick?: () => void;
 }
 
-export const Button = ({ title, variant, type }: ButtonProps) => {
-  return <button>{title}</button>;
+export const Button = ({ title, variant, type, disabled, onClick }: ButtonProps) => {
+  return (
+    <button type={type} disabled={disabled} onClick={onClick}>
+      {title}
+    </button>
+  );
 };
