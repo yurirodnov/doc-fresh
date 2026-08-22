@@ -1,5 +1,9 @@
+// back/src/routes/fileUploadRouter.ts
+
 import { Router } from "express";
+import { fileUploadController } from "../controllers/fileUploadController";
+import { multerUpload } from "../middlewares/multer";
 
-export const fileUploadRouter = Router();
+export const router = Router();
 
-fileUploadRouter.post("/api/upload");
+router.post("/upload", multerUpload.single("document"), fileUploadController);
