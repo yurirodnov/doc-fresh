@@ -7,7 +7,7 @@ import axios from "axios";
 
 interface UploadResponse {
   message: string;
-  processData: any;
+  // processData: any;
 }
 
 export const FileUploadForm = () => {
@@ -19,7 +19,7 @@ export const FileUploadForm = () => {
 
   const allowedFilesFormats = ".pdf,.doc,.docx,.txt";
 
-  const uploadAPI = "api/upload";
+  const uploadAPI = "http://localhost:3000/api/upload";
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
