@@ -13,7 +13,7 @@ export const fileUploadController = async (req: Request, res: Response, next: Ne
 
     const textFromFile = await checkFile(path, originalname, mimetype);
 
-    res.status(200).json({ message: "File caught!", fileContent: textFromFile });
+    res.status(200).json({ message: "Success!", result: textFromFile });
     console.log("get file");
   } catch (error) {
     next(error);
