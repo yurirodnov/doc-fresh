@@ -2,7 +2,7 @@ back/node_modules
 back/.env
 back/dist
 back/build
-back/uploads
+back/src/uploads
 
 front/node_modules
 front/.env
