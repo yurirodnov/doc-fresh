@@ -69,12 +69,21 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit}>
         <div>{message}</div>
+
+        <label htmlFor="file-upload" className={styles.label}>
+          <span>{file ? "📄" : ""}</span>
+          <span>{file ? file.name : "Select file"}</span>
+          {file && <span className={styles.uploadText}>{(file.size / 1024).toFixed(1)} KB</span>}
+        </label>
+
         <input
+          id="file-upload"
           type="file"
           onChange={handleFileChange}
           accept={allowedFilesFormats}
-          style={{ marginBottom: "10px", display: "block" }}
           ref={fileInputRef}
+          disabled={loading}
+          className={styles.input}
         />
         <div className={styles.formButtons}>
           <Button title={"Upload"} type="submit" disabled={!file || loading} />

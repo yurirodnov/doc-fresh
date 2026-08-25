@@ -36,6 +36,8 @@ body,
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--lime-cream);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* 4. Make media elements responsive and easy to work with */
