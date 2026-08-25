@@ -1,16 +1,17 @@
+// front/src/components/file-upload-form/FileUploadForm.tsx
+
 import { useState, useRef } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
+import type { LinkCheckReport, CheckResponse } from "../../types/types";
 import { Button } from "../button/Button";
-
 import styles from "./FileUploadForm.module.css";
 import axios from "axios";
 
-interface UploadResponse {
-  message: string;
-  // processData: any;
+interface FileUploadFormProps {
+  onReportUpload: (report: LinkCheckReport) => void;
 }
 
-export const FileUploadForm = () => {
+export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("Upload file, please");
@@ -39,9 +40,14 @@ export const FileUploadForm = () => {
     setMessage("File loading...");
 
     try {
-      const response = await axios.post<UploadResponse>(uploadAPI, data);
+      const response = await axios.post<CheckResponse>(uploadAPI, data);
       setMessage(response.data.message);
+
+      if (response.data.report) {
+        onReportUpload(response.data.report);
+      }
     } catch (err) {
+      setMessage("File uploading error");
     } finally {
       setLoading(false);
     }
