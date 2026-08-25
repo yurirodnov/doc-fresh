@@ -41,6 +41,7 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
 
     try {
       const response = await axios.post<CheckResponse>(uploadAPI, data);
+
       setMessage(response.data.message);
 
       if (response.data.report) {

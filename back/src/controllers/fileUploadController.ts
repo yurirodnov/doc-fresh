@@ -13,7 +13,7 @@ export const fileUploadController = async (req: Request, res: Response, next: Ne
 
     const checkResult = await checkFile(path, originalname, mimetype);
 
-    res.status(200).json({ success: true, message: "File checked!", result: checkResult });
+    res.status(200).json({ success: true, message: "File checked!", report: checkResult });
     console.log("get file");
   } catch (error) {
     next(error);
