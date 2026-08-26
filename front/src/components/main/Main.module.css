@@ -3,5 +3,12 @@
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
+  gap: 30px;
   padding: 20px;
+}
+
+.noResults {
+  color: var(--vintage-grape);
+  font-weight: bold;
+  font-size: 2em;
 }

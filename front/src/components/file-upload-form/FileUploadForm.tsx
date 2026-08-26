@@ -67,11 +67,11 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
 
   return (
     <div className={styles.formWrapper}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div>{message}</div>
 
         <label htmlFor="file-upload" className={styles.inputLabel}>
-          <span>{file ? file.name : "Select file"}</span>
+          <span className={styles.fileName}>{file ? file.name : "Select file"}</span>
           {file && <span className={styles.uploadText}>{(file.size / 1024).toFixed(1)} KB</span>}
         </label>
 

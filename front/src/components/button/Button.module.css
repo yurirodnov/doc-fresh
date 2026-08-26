@@ -21,9 +21,9 @@
 
 .disabled {
   background-color: #7e7e7e;
-  color: #fff;
+  color: #c5c5c5;
 }
 
 .disabled:hover {
-  cursor: default;
+  cursor: not-allowed;
 }

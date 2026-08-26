@@ -1,3 +1,18 @@
+.formWrapper {
+  width: 650px;
+  /* border: 3px dotted var(--dusty-grape); */
+  background-color: var(--emerald);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .formButtons {
   display: flex;
   gap: 10px;
@@ -6,10 +21,15 @@
 .inputLabel {
   display: flex;
   gap: 20px;
+  border: 3px dotted var(--dusty-grape);
 }
 
 .inputLabel:hover {
   cursor: pointer;
+}
+
+.fileName {
+  font-style: italic;
 }
 
 .input {

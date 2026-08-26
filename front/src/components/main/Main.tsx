@@ -12,7 +12,7 @@ export const Main = () => {
   return (
     <main className={styles.main}>
       <FileUploadForm onReportUpload={setReportData} />
-      {reportData ? <ReportViewer report={reportData} /> : <div>Not results yet...</div>}
+      {reportData ? <ReportViewer report={reportData} /> : <div className={styles.noResults}>No results yet...</div>}
     </main>
   );
 };
