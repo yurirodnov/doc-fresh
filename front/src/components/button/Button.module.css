@@ -1,0 +1,29 @@
+.button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--pacific-cyan);
+  color: #fff;
+}
+
+.accent {
+  background-color: var(--vintage-grape);
+  color: #fff;
+}
+
+.disabled {
+  background-color: #7e7e7e;
+  color: #fff;
+}
+
+.disabled:hover {
+  cursor: default;
+}

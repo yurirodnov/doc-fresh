@@ -9,12 +9,20 @@ interface ButtonProps {
   variant?: ButtonVariant;
   type: ButtonType;
   disabled: boolean;
+  className: string;
   onClick?: () => void;
 }
 
-export const Button = ({ title, variant, type, disabled, onClick }: ButtonProps) => {
+export const Button = ({ title, variant, type, disabled, className, onClick }: ButtonProps) => {
   return (
-    <button type={type} disabled={disabled} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      className={[styles.button, styles[variant as keyof typeof styles], disabled && styles.disabled, className]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {title}
     </button>
   );

@@ -85,8 +85,15 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
           className={styles.input}
         />
         <div className={styles.formButtons}>
-          <Button title={"Upload"} type="submit" disabled={!file || loading} />
-          <Button title="Remove" type="button" disabled={!file || loading} onClick={handleRemove} />
+          <Button title="Upload" type="submit" disabled={!file || loading} variant="primary" className="button" />
+          <Button
+            title="Reset"
+            type="button"
+            disabled={!file || loading}
+            onClick={handleRemove}
+            variant="accent"
+            className="button"
+          />
         </div>
       </form>
     </div>
