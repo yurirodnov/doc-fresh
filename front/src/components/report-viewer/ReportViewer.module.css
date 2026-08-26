@@ -1,5 +1,14 @@
 .report {
+  width: 650px;
   display: flex;
   flex-direction: column;
   border: 3px dotted var(--dusty-grape);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.reportMetric {
+  display: flex;
+  gap: 10px;
 }

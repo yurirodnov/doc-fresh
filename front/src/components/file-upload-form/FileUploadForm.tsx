@@ -8,7 +8,7 @@ import styles from "./FileUploadForm.module.css";
 import axios from "axios";
 
 interface FileUploadFormProps {
-  onReportUpload: (report: LinkCheckReport) => void;
+  onReportUpload: (report: LinkCheckReport | null) => void;
 }
 
 export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
@@ -57,8 +57,10 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
   const handleRemove = () => {
     if (file) {
       setFile(null);
-      setMessage("");
+      setMessage("Upload file, please");
     }
+
+    onReportUpload(null);
 
     if (fileInputRef.current) {
       fileInputRef.current.value = "";

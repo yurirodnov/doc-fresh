@@ -15,11 +15,13 @@
 
 .formButtons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .inputLabel {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   border: 3px dotted var(--dusty-grape);
 }
