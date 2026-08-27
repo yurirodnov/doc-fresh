@@ -1,4 +1,4 @@
-// back/src/services/fileCheckerService.ts
+// back/src/services/checkFileService.ts
 
 import fs from "fs/promises";
 
@@ -12,7 +12,7 @@ interface FileCheckReport {
 
 const URL_REGEXP = /https?:\/\/[^\s'")]+/g;
 
-export const checkFile = async (
+export const checkFileService = async (
   filePath: string,
   fileOriginalName: string,
   fileMimeType: string,

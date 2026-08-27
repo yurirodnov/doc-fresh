@@ -1,7 +1,7 @@
 // back/src/controllers/fileUploadController.ts
 
 import type { NextFunction, Request, Response } from "express";
-import { checkFile } from "../services/fileCheckerService";
+import { checkFileService } from "../services/checkFIleService";
 
 export const fileUploadController = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -11,7 +11,7 @@ export const fileUploadController = async (req: Request, res: Response, next: Ne
 
     const { path, originalname, mimetype } = req.file;
 
-    const checkResult = await checkFile(path, originalname, mimetype);
+    const checkResult = await checkFileService(path, originalname, mimetype);
 
     res.status(200).json({ success: true, message: "File checked!", report: checkResult });
     console.log("get file");
