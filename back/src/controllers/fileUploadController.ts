@@ -1,7 +1,8 @@
 // back/src/controllers/fileUploadController.ts
 
 import type { NextFunction, Request, Response } from "express";
-import { checkFileService } from "../services/checkFIleService";
+import { checkFileService } from "../services/checkFileService";
+import { removeFileService } from "../services/removeFileService";
 
 export const fileUploadController = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -17,5 +18,9 @@ export const fileUploadController = async (req: Request, res: Response, next: Ne
     console.log("get file");
   } catch (error) {
     next(error);
+  } finally {
+    if (req.file?.path) {
+      await removeFileService(req.file.path);
+    }
   }
 };
