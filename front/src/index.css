@@ -6,6 +6,8 @@
   --pacific-cyan: #348aa7ff;
   --dusty-grape: #525174ff;
   --vintage-grape: #513b56ff;
+  --white: #ffffff;
+  --white-soft: #f8faf9;
 }
 
 /* 1. Use a more intuitive box-sizing model */
@@ -37,7 +39,9 @@ body,
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--lime-cream);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dusty-grape);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 /* 4. Make media elements responsive and easy to work with */

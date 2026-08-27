@@ -70,7 +70,7 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div>{message}</div>
+        <div className={styles.statusMessage}>{message}</div>
 
         <label htmlFor="file-upload" className={styles.inputLabel}>
           <span className={styles.fileName}>{file ? file.name : "Select file"}</span>
