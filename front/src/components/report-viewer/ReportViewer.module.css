@@ -1,6 +1,8 @@
 .report {
+  background-color: var(--white);
   width: 650px;
   display: flex;
+  gap: 20px;
   flex-direction: column;
   border: 3px dotted var(--dusty-grape);
   border-radius: 10px;
@@ -8,7 +10,16 @@
   font-size: 1.5em;
 }
 
+.countData {
+  font-weight: bold;
+}
+
 .reportMetric {
   display: flex;
   gap: 10px;
+}
+
+.failedLinksHeader {
+  display: flex;
+  justify-content: space-between;
 }

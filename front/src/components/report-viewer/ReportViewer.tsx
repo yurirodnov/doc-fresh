@@ -19,30 +19,40 @@ export const ReportViewer = ({ report }: ReportViewerProps) => {
   return (
     <div className={styles.report}>
       <h3>Check report</h3>
-      <div className={styles.reportMetric}>
-        <span>Links checked:</span>
-        <span>{report ? report.linksTotalCount : "N/A"}</span>
-      </div>
-      <div className={styles.reportMetric}>
-        <span>Success:</span>
-        <span>{report ? report.linksSuccessCount : "N/A"}</span>
-      </div>
-      <div className={styles.reportMetric}>
-        <span>Fail:</span>
-        <span>{report ? report.linksFailCount : "N/A"}</span>
+      <div className={styles.reportMainData}>
+        <div className={styles.reportMetric}>
+          <span>Links checked:</span>
+          <span className={styles.countData}>{report ? report.linksTotalCount : "N/A"}</span>
+        </div>
+        <div className={styles.reportMetric}>
+          <span>Success:</span>
+          <span className={styles.countData}>{report ? report.linksSuccessCount : "N/A"}</span>
+        </div>
+        <div className={styles.reportMetric}>
+          <span>Fail:</span>
+          <span className={styles.countData}>{report ? report.linksFailCount : "N/A"}</span>
+        </div>
       </div>
 
       {report?.linksFailCount && report.linksFailCount > 0 ? (
         <div className={styles.failedLinksWrapper}>
-          <div>
-            <span>Failed links</span>
-            <Button title="Show" onClick={handleShowFailed} />
+          <div className={styles.failedLinksHeader}>
+            <h3>Failed links</h3>
+            <Button
+              type="button"
+              title={showFails ? "Hide" : "Show"}
+              variant="accordeon"
+              className="button"
+              onClick={handleShowFailed}
+            />
           </div>
           {showFails && (
             <div className={styles.failedLinksList}>
               {report.linksFailList.map((link) => (
                 <div className={styles.failedLink}>
-                  <a href={link}>{link}</a>
+                  <a href={link} target="_blank">
+                    {link}
+                  </a>
                 </div>
               ))}
             </div>

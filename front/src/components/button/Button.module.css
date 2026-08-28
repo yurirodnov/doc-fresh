@@ -19,6 +19,11 @@
   color: #fff;
 }
 
+.accordeon {
+  background-color: var(--dusty-grape);
+  color: #fff;
+}
+
 .disabled {
   background-color: #7e7e7e;
   color: #c5c5c5;

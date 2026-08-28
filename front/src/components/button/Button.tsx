@@ -1,6 +1,6 @@
 import styles from "./Button.module.css";
 
-type ButtonVariant = "primary" | "accent";
+type ButtonVariant = "primary" | "accent" | "accordeon";
 
 type ButtonType = "submit" | "button";
 
@@ -8,7 +8,7 @@ interface ButtonProps {
   title: string;
   variant?: ButtonVariant;
   type: ButtonType;
-  disabled: boolean;
+  disabled?: boolean;
   className: string;
   onClick?: () => void;
 }
