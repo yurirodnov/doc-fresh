@@ -1,13 +1,21 @@
 // front//src/components/report-viewer/ReportViewer.tsx
 
+import { useState } from "react";
 import type { LinkCheckReport } from "../../types/types";
 import styles from "./ReportViewer.module.css";
+import { Button } from "../button/Button";
 
 interface ReportViewerProps {
   report: LinkCheckReport | null;
 }
 
 export const ReportViewer = ({ report }: ReportViewerProps) => {
+  const [showFails, setShowFails] = useState<boolean>(false);
+
+  const handleShowFailed = () => {
+    setShowFails((prev) => !prev);
+  };
+
   return (
     <div className={styles.report}>
       <h3>Check report</h3>
@@ -23,6 +31,24 @@ export const ReportViewer = ({ report }: ReportViewerProps) => {
         <span>Fail:</span>
         <span>{report ? report.linksFailCount : "N/A"}</span>
       </div>
+
+      {report?.linksFailCount && report.linksFailCount > 0 ? (
+        <div className={styles.failedLinksWrapper}>
+          <div>
+            <span>Failed links</span>
+            <Button title="Show" onClick={handleShowFailed} />
+          </div>
+          {showFails && (
+            <div className={styles.failedLinksList}>
+              {report.linksFailList.map((link) => (
+                <div className={styles.failedLink}>
+                  <a href={link}>{link}</a>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : null}
     </div>
   );
 };
