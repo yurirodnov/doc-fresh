@@ -2,11 +2,16 @@
 
 import fs from "fs/promises";
 
+interface FailedLinkItem {
+  link: string;
+  code?: number | null;
+}
+
 interface FileCheckReport {
   linksTotalCount: number;
   linksSuccessCount: number;
   linksFailCount: number;
-  linksFailList: string[];
+  linksFailList: FailedLinkItem[];
   linksSuccessList: string[];
 }
 
@@ -50,12 +55,14 @@ export const checkFileService = async (
           signal: controller.signal,
         });
 
+        const code = response.status;
+
         clearTimeout(timeout);
 
         if (response.ok) {
-          return { link, status: "success" as const };
+          return { link, code, status: "success" as const };
         } else {
-          return { link, status: "fail" as const };
+          return { link, code, status: "fail" as const };
         }
       } catch (err) {
         return { link, status: "fail" as const };
@@ -71,8 +78,17 @@ export const checkFileService = async (
           checkReport.linksSuccessList.push(result.value.link);
           checkReport.linksSuccessCount += 1;
         } else {
-          checkReport.linksFailList.push(result.value.link);
+          const failedLinkData: FailedLinkItem = {
+            link: "",
+            code: null,
+          };
+          failedLinkData.link = result.value.link;
+          failedLinkData.code = result.value.code;
+
+          checkReport.linksFailList.push(failedLinkData);
           checkReport.linksFailCount += 1;
+
+          // checkReport.linksFailList.push(result.value.link);
         }
       }
     });

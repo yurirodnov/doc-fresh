@@ -4,7 +4,7 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
-  border: 3px dotted var(--dusty-grape);
+  border: 2px solid var(--dusty-grape);
   border-radius: 10px;
   padding: 20px;
   font-size: 1.5em;
@@ -22,4 +22,18 @@
 .failedLinksHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.failedLinksList {
+  margin-top: 20px;
+}
+
+.failedLink {
+  display: flex;
+  justify-content: space-between;
+}
+
+.failCode {
+  font-weight: bold;
 }

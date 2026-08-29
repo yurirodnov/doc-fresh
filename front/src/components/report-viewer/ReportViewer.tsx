@@ -48,11 +48,12 @@ export const ReportViewer = ({ report }: ReportViewerProps) => {
           </div>
           {showFails && (
             <div className={styles.failedLinksList}>
-              {report.linksFailList.map((link) => (
-                <div className={styles.failedLink}>
-                  <a href={link} target="_blank">
-                    {link}
+              {report.linksFailList.map((item, index) => (
+                <div className={styles.failedLink} key={index}>
+                  <a href={item.link} target="_blank">
+                    {item.link}
                   </a>
+                  <span className={styles.failCode}>{item.code}</span>
                 </div>
               ))}
             </div>

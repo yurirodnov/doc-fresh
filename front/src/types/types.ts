@@ -1,10 +1,15 @@
 // front/src/types/types.ts
 
+interface FailedLinkItem {
+  link: string;
+  code?: number | null;
+}
+
 export interface LinkCheckReport {
   linksTotalCount: number;
   linksSuccessCount: number;
   linksFailCount: number;
-  linksFailList: string[];
+  linksFailList: FailedLinkItem[];
   linksSuccessList: string[];
 }
 
