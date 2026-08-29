@@ -28,7 +28,7 @@ Prerequisites:
     git clone git@github.com:yurirodnov/doc-fresh.git
     ```
 
-2.  **Go to an back directory:**
+2.  **Go to a back directory:**
     ```bash
     cd doc-fresh/back
     ```
@@ -40,7 +40,7 @@ Prerequisites:
     ```bash
     npm run dev
     ```
-5.  **Repeat 3, 4 for front directory**
+5.  **Repeat 3, 4 for "front" directory**
 
 6.  **Open the link shown in the terminal (usually `http://localhost:5173`)**.
 
