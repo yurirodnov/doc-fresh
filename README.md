@@ -2,7 +2,7 @@
 
 ![Cover](cover.jpg)
 
-App for checking TXT files for a incorrect links. User uploads document file and gets file-check report.
+App for checking TXT files for a incorrect links. User uploads document file and gets file-check report. PDF processing support soon.
 
 ## Features
 
