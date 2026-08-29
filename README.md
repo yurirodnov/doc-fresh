@@ -12,7 +12,7 @@ App for checking TXT files for a incorrect links. User uploads document file and
 
 ## API
 
-### POST `/api/upload`
+- POST `/api/upload`
 
 ## Local run
 
