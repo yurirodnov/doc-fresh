@@ -1,5 +1,3 @@
-import { Tip } from "../tip/Tip";
-
 import styles from "./Header.module.css";
 
 export const Header = () => {

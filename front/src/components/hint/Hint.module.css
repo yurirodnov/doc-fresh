@@ -1,0 +1,38 @@
+.hintWrapper {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: var(--dusty-grape);
+  border: 2px solid var(--dusty-grape);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hintWrapper:hover .hints {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hints {
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  white-space: nowrap;
+  background-color: var(--white);
+  border: 2px solid var(--dusty-grape);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(82, 81, 116, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+  z-index: 999;
+}
