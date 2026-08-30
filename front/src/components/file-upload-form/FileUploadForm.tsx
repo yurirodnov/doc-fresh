@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
 import type { LinkCheckReport, CheckResponse } from "../../types/types";
 import { Button } from "../button/Button";
+import { Tip } from "../tip/Tip";
 import styles from "./FileUploadForm.module.css";
 import axios from "axios";
 
@@ -95,7 +96,10 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.statusMessage}>{message}</div>
+        <div className={styles.formHeader}>
+          <div className={styles.statusMessage}>{message}</div>
+          <Tip />
+        </div>
 
         <label htmlFor="file-upload" className={styles.inputLabel}>
           <span className={styles.fileName}>{file ? file.name : "Select file"}</span>
