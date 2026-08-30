@@ -11,6 +11,15 @@ interface FileUploadFormProps {
   onReportUpload: (report: LinkCheckReport | null) => void;
 }
 
+const ALLOWED_FILE_EXTENSIONS = [".pdf", ".doc", ".docx", ".txt"];
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const ALLOWED_MIME_TYPES = [
+  "text/plain",
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+
 export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -18,13 +27,29 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const allowedFilesFormats = ".pdf,.doc,.docx,.txt";
-
   const uploadAPI = "http://localhost:3000/api/upload";
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+
+      if (!ALLOWED_MIME_TYPES.includes(selectedFile.type)) {
+        setMessage("Invalid MIME-type");
+        return;
+      }
+
+      const selectedFileExtension = "." + selectedFile.name.split(".").pop()?.toLowerCase();
+      if (!ALLOWED_FILE_EXTENSIONS.includes(selectedFileExtension)) {
+        setMessage("Invalid file extension");
+        return;
+      }
+
+      if (selectedFile.size > MAX_FILE_SIZE) {
+        setMessage("File too big");
+        return;
+      }
+      setFile(selectedFile);
+      setMessage("File selected");
     }
   };
 
@@ -81,7 +106,7 @@ export const FileUploadForm = ({ onReportUpload }: FileUploadFormProps) => {
           id="file-upload"
           type="file"
           onChange={handleFileChange}
-          accept={allowedFilesFormats}
+          accept={ALLOWED_FILE_EXTENSIONS.join()}
           ref={fileInputRef}
           disabled={loading}
           className={styles.input}
