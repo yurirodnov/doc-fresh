@@ -1,6 +1,8 @@
 // back/src/services/checkFileService.ts
 
 import fs from "fs/promises";
+import { PDFParse, TextResult } from "pdf-parse";
+import { TextContent } from "pdfjs-dist/types/src/display/api";
 
 interface FailedLinkItem {
   link: string;
@@ -17,6 +19,13 @@ interface FileCheckReport {
 
 const URL_REGEXP = /https?:\/\/[^\s'")]+/g;
 
+const ALLOWED_MIME_TYPES = [
+  "text/plain",
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+
 export const checkFileService = async (
   filePath: string,
   fileOriginalName: string,
@@ -30,12 +39,27 @@ export const checkFileService = async (
     linksSuccessList: [],
   };
 
-  if (!fileMimeType.startsWith("text/") && fileMimeType !== "application/json") {
+  // if (!fileMimeType.startsWith("text/") && fileMimeType !== "application/json") {
+  //   throw new Error("Unsupported file format");
+  // }
+
+  if (!ALLOWED_MIME_TYPES.includes(fileMimeType)) {
     throw new Error("Unsupported file format");
   }
 
   try {
-    const fileContent = await fs.readFile(filePath, "utf-8");
+    let fileContent: string = "";
+
+    if (fileMimeType === "text/plain") {
+      fileContent = await fs.readFile(filePath, "utf-8");
+    } else if (fileMimeType === "application/pdf") {
+      const buffer = await fs.readFile(filePath);
+      const uint8Array = new Uint8Array(buffer);
+      const parser = new PDFParse(uint8Array);
+      const textResult = await parser.getText();
+      fileContent = textResult.text;
+      console.log(fileContent);
+    }
     const extractedLinks = fileContent.match(URL_REGEXP) || [];
     const uniqueLinks = [...new Set(extractedLinks)];
 
@@ -94,7 +118,8 @@ export const checkFileService = async (
     });
 
     return checkReport;
-  } catch {
+  } catch (error) {
+    console.log(`File processing error: ${error} `);
     throw new Error(`Unable to read ${filePath}`);
   }
 };
