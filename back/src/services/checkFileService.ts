@@ -1,6 +1,7 @@
 // back/src/services/checkFileService.ts
 
 import fs from "fs/promises";
+import mammoth from "mammoth";
 import { PDFParse, TextResult } from "pdf-parse";
 import { TextContent } from "pdfjs-dist/types/src/display/api";
 
@@ -59,7 +60,11 @@ export const checkFileService = async (
       const textResult = await parser.getText();
       fileContent = textResult.text;
       console.log(fileContent);
+    } else if (fileMimeType === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+      const docxData = await mammoth.extractRawText({ path: filePath });
+      fileContent = docxData.value;
     }
+
     const extractedLinks = fileContent.match(URL_REGEXP) || [];
     const uniqueLinks = [...new Set(extractedLinks)];
 
