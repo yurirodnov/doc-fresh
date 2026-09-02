@@ -53,7 +53,7 @@ export const ReportViewer = ({ report }: ReportViewerProps) => {
                   <a href={item.link} target="_blank">
                     {item.link}
                   </a>
-                  <span className={styles.failCode}>{item.code}</span>
+                  <span className={styles.failCode}>{item.code ? item.code : "N/A"}</span>
                 </div>
               ))}
             </div>
