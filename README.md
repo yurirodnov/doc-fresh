@@ -10,7 +10,7 @@ App for checking TXT files for a incorrect links. User uploads document file and
 - Built with React, TypeScript, Express.js
 - Green design with https://coolors.co/palette/bce784-5dd39e-348aa7-525174-513b56
 - Use [multer](https://www.npmjs.com/package/multer) for file middleware
-- Fomats packages: [mammoth](https://www.npmjs.com/package/mammoth) for DOCX handling, [pdf-parse](https://www.npmjs.com/package/pdf-parse) for PDF handling
+- Formats processing packages: [mammoth](https://www.npmjs.com/package/mammoth) for DOCX, [pdf-parse](https://www.npmjs.com/package/pdf-parse) for PDF
 
 ## API
 
