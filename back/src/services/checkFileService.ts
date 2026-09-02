@@ -77,6 +77,7 @@ export const checkFileService = async (
         const response = await fetch(link, {
           method: "HEAD",
           signal: controller.signal,
+          redirect: "follow",
         });
 
         const code = response.status;
