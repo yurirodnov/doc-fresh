@@ -2,10 +2,11 @@
 
 ![Cover](cover.jpg)
 
-App for checking TXT files for a incorrect links. User uploads document file and gets file-check report. PDF processing support soon.
+App for checking TXT files for a incorrect links. User uploads document file and gets file-check report.
 
 ## Features
 
+- Allowed formats: TXT, PDF, DOCX
 - Built with React, TypeScript, Express.js
 - Green design with https://coolors.co/palette/bce784-5dd39e-348aa7-525174-513b56
 - Use [multer](https://www.npmjs.com/package/multer) for file middleware
@@ -18,7 +19,7 @@ App for checking TXT files for a incorrect links. User uploads document file and
 
 Prerequisites:
 
-- Node.js (v18 or higher) installed on your machine.
+- Node.js (v20 or higher) installed on your machine.
 
 1.  **Clone the repo:**
 
