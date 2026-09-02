@@ -2,11 +2,12 @@
 
 ![Cover](cover.jpg)
 
-App for checking TXT files for a incorrect links. User uploads document file and gets file-check report.
+App for checking docs for an incorrect links. User uploads document file and gets report after check.
 
 ## Features
 
 - Allowed formats: TXT, PDF, DOCX
+- Max file's size allowed: 5 MB
 - Built with React, TypeScript, Express.js
 - Green design with https://coolors.co/palette/bce784-5dd39e-348aa7-525174-513b56
 - Use [multer](https://www.npmjs.com/package/multer) for file middleware
