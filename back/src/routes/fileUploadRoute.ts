@@ -7,4 +7,4 @@ import { rateLimiter } from "../middlewares/rateLimiter";
 
 export const router = Router();
 
-router.post("/upload", rateLimiter, multerUpload.single("document"), fileUploadController);
+router.post("/upload", multerUpload.single("document"), fileUploadController);

@@ -30,4 +30,7 @@ export const rateLimiter = (req: Request, res: Response, next: NextFunction) => 
     res.set("Retry-After", String(retryAfter));
     return res.status(429).json({ success: false, message: `Too many request, try after ${retryAfter}` });
   }
+
+  entry.tryCount += 1;
+  next();
 };
