@@ -71,7 +71,7 @@ export const checkFileService = async (
     const uniqueLinks = [...new Set(extractedLinks)];
 
     if (uniqueLinks.length > MAX_LINKS_IN_FILE_ALLOWED) {
-      throw new Error(`Too much links in file. Max allowed count is ${MAX_LINKS_IN_FILE_ALLOWED}`);
+      throw new Error(`Too many links in file. Max allowed count is ${MAX_LINKS_IN_FILE_ALLOWED}`);
     }
 
     checkReport.linksTotalCount = uniqueLinks.length;
