@@ -27,6 +27,8 @@ const ALLOWED_MIME_TYPES = [
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ];
 
+const MAX_LINKS_IN_FILE_ALLOWED = 120;
+
 export const checkFileService = async (
   filePath: string,
   fileOriginalName: string,
@@ -67,6 +69,10 @@ export const checkFileService = async (
 
     const extractedLinks = fileContent.match(URL_REGEXP) || [];
     const uniqueLinks = [...new Set(extractedLinks)];
+
+    if (uniqueLinks.length > MAX_LINKS_IN_FILE_ALLOWED) {
+      throw new Error(`Too much links in file. Max allowed count is ${MAX_LINKS_IN_FILE_ALLOWED}`);
+    }
 
     checkReport.linksTotalCount = uniqueLinks.length;
 
