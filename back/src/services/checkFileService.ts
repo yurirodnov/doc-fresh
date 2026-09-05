@@ -61,7 +61,6 @@ export const checkFileService = async (
       const parser = new PDFParse(uint8Array);
       const textResult = await parser.getText();
       fileContent = textResult.text;
-      console.log(fileContent);
     } else if (fileMimeType === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
       const docxData = await mammoth.extractRawText({ path: filePath });
       fileContent = docxData.value;
@@ -106,7 +105,6 @@ export const checkFileService = async (
     });
 
     const results = await Promise.allSettled(checkPromises);
-    console.log(results);
 
     results.forEach((result) => {
       if (result.status === "fulfilled") {
